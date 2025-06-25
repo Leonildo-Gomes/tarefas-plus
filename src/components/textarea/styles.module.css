@@ -1,0 +1,10 @@
+
+.textarea {
+    border-radius: 8px;
+    color: #fff;
+    padding: 8px;
+    resize: vertical;
+    height: 160px;
+    width: 100%;
+    outline: none;
+}
