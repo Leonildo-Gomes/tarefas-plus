@@ -1,11 +1,19 @@
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
 import Head from "next/head";
+import { ChangeEvent, useState } from "react";
 import { FaTrash } from "react-icons/fa";
 import { FiShare2 } from "react-icons/fi";
 import { TextArea } from '../../components/textarea';
 import styles from "./styles.module.css";
 export default function Dashboard() {
+    const [input, setInput] = useState("");
+     const [publicTask, setPublicTask] = useState(false);
+    function handleOnChangePublic(event: ChangeEvent<HTMLInputElement>): void {
+        console.log(event.target.checked);
+        setPublicTask(event.target.checked);
+    }
+
     return (
         <div className={styles.container}>
             <Head>    
@@ -18,18 +26,23 @@ export default function Dashboard() {
                         <form action="">
                             <TextArea
                                 placeholder="Digite sua tarefa"
+                                value={input}   
+                                onChange={(event: ChangeEvent<HTMLTextAreaElement>) => setInput(event.target.value)} 
                             />
                             <div className={styles.checkboxArea}>
                                 <input type="checkbox" 
-                                className={styles.checkbox}/>
-                                <label htmlFor="">Deixar tarefa publica</label>
+                                    className={styles.checkbox}
+                                    checked={publicTask}
+                                    onChange={handleOnChangePublic}
+                                />
+                                <label htmlFor="">Deixar tarefa publica?</label>
                             </div>
                             <button className={styles.button} type="submit">Criar tarefa</button>
                         </form>
                     </div>
                 </section>
                 <section className={styles.taskContainer}>
-                    <h1> Minhas tarefas </h1>
+                    <h1> Minhas Tarefas </h1>
                     <article className={styles.task}>
                         <div className={styles.tagContainer}>
                             <label className={styles.tag}>PUBLICO</label>
@@ -55,7 +68,6 @@ export default function Dashboard() {
 }  
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-
     const session = await getSession({ req:req })
     if(!session?.user){
         //se nao tem usuario vamor redirecionar para home
