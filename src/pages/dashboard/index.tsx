@@ -24,7 +24,7 @@ interface TaskProps {
     public: boolean;
 }
 
-export default function Dashboard({ user }:DashboardProps ) {
+export default function Dashboard({ user }:DashboardProps) {
     const [input, setInput] = useState("");
      const [publicTask, setPublicTask] = useState(false);
      const [tasks, setTasks] = useState<TaskProps[]>([]);
@@ -34,7 +34,7 @@ export default function Dashboard({ user }:DashboardProps ) {
             const tarefasRef = collection(db, "tarefas");
             const queryRef = query(tarefasRef, orderBy("created", "desc"), where("user", "==", user?.email));
             onSnapshot(queryRef, (snapshot) => {
-                console.log(snapshot.docs);
+                //console.log(snapshot.docs);
                 let list = [] as TaskProps[];
                 snapshot.forEach((doc) => {
                     list.push({
@@ -53,7 +53,7 @@ export default function Dashboard({ user }:DashboardProps ) {
          
      }, [user?.email]);
     function handleOnChangePublic(event: ChangeEvent<HTMLInputElement>): void {
-        console.log(event.target.checked);
+       // console.log(event.target.checked);
         setPublicTask(event.target.checked);
     }
 
@@ -90,6 +90,11 @@ export default function Dashboard({ user }:DashboardProps ) {
         })
     }
 
+    async function handleShareTask(id: string) {
+        await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_URL}/task/${id}`);
+        alert("URL da tarefa copiada com sucesso");
+    }
+
     return (
         <div className={styles.container}>
             <Head>    
@@ -124,7 +129,7 @@ export default function Dashboard({ user }:DashboardProps ) {
                             {item.public && (
                                 <div className={styles.tagContainer}>
                                     <label className={styles.tag}>PUBLICO</label>
-                                    <button className={styles.shareButton}>
+                                    <button className={styles.shareButton} onClick={()=>handleShareTask(item.id)}>
                                         <FiShare2  size={22} color="#3183ff"/>
                                     </button>
                                 </div>
