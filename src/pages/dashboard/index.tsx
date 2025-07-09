@@ -107,7 +107,9 @@ export default function Dashboard({ user }:DashboardProps) {
                         <form action="" onSubmit={handleRegisterTask}>
                             <TextArea
                                 placeholder="Digite sua tarefa"
-                                value={input}   
+                                value={input} 
+                                rows={5}
+                                className="bg-white  text-gray-900 text-sm rounded-md block w-full p-5"  
                                 onChange={(event: ChangeEvent<HTMLTextAreaElement>) => setInput(event.target.value)} 
                             />
                             <div className={styles.checkboxArea}>

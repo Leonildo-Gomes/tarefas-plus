@@ -6,7 +6,7 @@ Este projeto é uma projeto de tarefas pessoal desenvolvido com Next.js, TypeScr
 
 ## Estrutura e Tecnologias
 
-* **Framework:** Next.js (versão 15.x)
+* **Framework:** Next.js (versão 15.3.4)
 * **Linguagem:** TypeScript
 * **Estilização:** Tailwind CSS para classes utilitárias e estilos globais.
 * **Roteamento:** Usa o App Router do Next.js.

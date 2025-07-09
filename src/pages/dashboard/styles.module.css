@@ -22,12 +22,17 @@
     color:#fff;
     margin-bottom: 28px;
 }
+.checkboxArea {
+    display: flex;
+    align-items: center;
+} 
 
 .checkboxArea label  {
     margin: 14px 0;
     color:#fff;
 }
 .checkboxArea label  {
+   
     margin-left: 8px;
     
 }

@@ -1,40 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Projeto de Tarefas com Next.js
 
-## Getting Started
+Este é um projeto de um aplicativo de gerenciamento de tarefas (To-Do List) desenvolvido com Next.js, TypeScript e Firebase.
 
-First, run the development server:
+## Funcionalidades
+
+- Criar, editar e excluir tarefas.
+- Marcar tarefas como concluídas.
+- Visualização de tarefas em um painel central.
+- Autenticação de usuários para gerenciamento de tarefas pessoais.
+
+## Tecnologias Utilizadas
+
+- **Framework:** [Next.js](https://nextjs.org/)
+- **Linguagem:** [TypeScript](https://www.typescriptlang.org/)
+- **Estilização:** [Tailwind CSS](https://tailwindcss.com/)
+- **Banco de Dados:** [Firebase Firestore](https://firebase.google.com/docs/firestore)
+- **Autenticação:** [NextAuth.js](https://next-auth.js.org/)
+
+## Estrutura do Projeto
+
+O projeto segue uma estrutura organizada para facilitar a manutenção e escalabilidade:
+
+```
+/
+├── public/               # Arquivos estáticos (imagens, ícones)
+├── src/
+│   ├── components/       # Componentes React reutilizáveis
+│   ├── lib/              # Funções utilitárias (ex: manipulação de tarefas)
+│   ├── pages/            # Páginas e rotas da aplicação (App Router)
+│   │   ├── api/          # Rotas de API (ex: NextAuth)
+│   │   ├── dashboard/    # Painel principal do usuário
+│   │   └── task/         # Página para visualização de uma tarefa específica
+│   ├── services/         # Configuração e conexão com serviços externos (Firebase)
+│   └── types/            # Definições de tipos TypeScript
+├── styles/               # Estilos globais
+├── .gitignore
+├── next.config.ts        # Configurações do Next.js
+├── package.json
+└── tsconfig.json
+```
+
+## Como Começar
+
+Siga os passos abaixo para executar o projeto em seu ambiente local.
+
+### Pré-requisitos
+
+- [Node.js](httpss://nodejs.org/en/) (versão 18 ou superior)
+- [npm](httpss://www.npmjs.com/) ou [yarn](httpss://yarnpkg.com/)
+
+### Instalação
+
+1. Clone o repositório:
+   ```bash
+   git clone <url-do-repositorio>
+   ```
+
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+
+3. Configure as variáveis de ambiente. Crie um arquivo `.env.local` na raiz do projeto e adicione as credenciais do Firebase e as configurações do NextAuth.
+
+   ```env
+   # Credenciais do Firebase
+   NEXT_PUBLIC_FIREBASE_API_KEY=
+   NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+   NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+   NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+   NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+   NEXT_PUBLIC_FIREBASE_APP_ID=
+
+   # Chave secreta para NextAuth
+   NEXTAUTH_SECRET=
+   ```
+
+### Executando o Projeto
+
+Para iniciar o servidor de desenvolvimento, execute:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado.
